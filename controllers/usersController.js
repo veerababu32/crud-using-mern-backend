@@ -5,13 +5,13 @@ const User = require("../models/user");
 async function signup(req, res) {
   try {
     // Get the email & pass off req body
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
 
     // Hash password
     var hashedPassword = bcrypt.hashSync(password, 8);
 
     // Create a user with the data
-    await User.create({ email, password: hashedPassword });
+    await User.create({ username, email, password: hashedPassword });
 
     // respond
     res.sendStatus(200);
